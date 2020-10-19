@@ -1,5 +1,7 @@
 <script lang="ts">
+  import Box from "../Box";
   import Loader from "../Loader/Loader.svelte";
+  import ButtonExample from "./ButtonExample.svelte";
 
   type Variants = "filled" | "light" | "outlined";
 
@@ -178,7 +180,10 @@
   class:with-after={!!$$slots.after}
   class:icon
   tabindex={tabIndex}
-  aria-disabled={disabled}>
+  aria-disabled={disabled}
+  on:click
+  on:blur
+  {...$$props}>
   {#if loading}
     <div class="loader-container">
       <Loader height="24px" />
