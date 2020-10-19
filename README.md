@@ -1,4 +1,4 @@
-# svelte ui
+# SveltEZ
 
 A simple yet powerfull svelte components library.
 
