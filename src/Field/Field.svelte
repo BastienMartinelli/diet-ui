@@ -74,9 +74,13 @@
     box-shadow: var(--grey) 0px 1px 2px inset;
   }
 
-  .root:focus-within > .container {
+  .container:focus-within {
     border-color: var(--field-focus-label);
     box-shadow: var(--grey) 0px 1px 2px inset, var(--field-light) 0 0 0 3px;
+  }
+
+  .root:focus-within > label {
+    color: var(--field-focus-label);
   }
 
   .message {
