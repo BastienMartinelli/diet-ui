@@ -1,0 +1,45 @@
+html {
+  --primary-dark: #5566ff;
+  --primary: #6A79F8;
+  --primary-light: #A6AFFC;
+  --primary-xlight: #E5E8FB;
+
+  --error: #FF647C;
+  --error-light: #FDAFBC;
+  --error-xlight: #FAE4E7;
+
+  --black: #1B051C;
+  --grey-dark: #3F3456;
+  --grey: #D0CAD6;
+  --grey-light: #F6F4F9;
+  --white: #FFFFFF;
+
+  --contrast:#fff;
+
+  --secondary: #fff;
+  --text-contrast: #fff;
+  --text-primary: #000;
+  --text-secondary: grey;
+
+  --border-radius: 8px;
+
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.skeleton {
+  animation: glow 1s linear infinite alternate;
+  color: transparent !important;
+  background-color: var(--grey) !important;
+  pointer-events: none;
+  user-select: none;
+  background-image: none !important;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
