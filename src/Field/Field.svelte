@@ -1,23 +1,15 @@
 <script lang="ts">
   import createId from "../utils/createId";
 
+  type Status = "default" | "error" | "success" | "warning";
+
   export let placeholder = "";
   export let id = createId();
   export let label = "";
   export let type = "text";
-  export let error = false;
   export let message = "";
   export let skeleton = false;
-
-  let hasFocus = false;
-
-  function handleFocus(e) {
-    hasFocus = true;
-  }
-
-  function handleBlur(e) {
-    hasFocus = false;
-  }
+  export let status: Status = "default";
 </script>
 
 <style>
@@ -42,15 +34,35 @@
   label {
     display: inline-block;
     margin-bottom: 4px;
-    color: var(--grey-dark);
+    color: var(--field-label);
   }
 
-  .root.hasFocus > label {
-    color: var(--primary);
+  .default {
+    --field-label: var(--grey-dark);
+    --field-focus-label: var(--primary);
+    --field-border: var(--grey);
+    --field-light: var(--primary-light);
   }
 
-  .root.error > label {
-    color: var(--error);
+  .error {
+    --field-label: var(--error);
+    --field-focus-label: var(--error);
+    --field-border: var(--error);
+    --field-light: var(--error-light);
+  }
+
+  .warning {
+    --field-label: var(--warning);
+    --field-focus-label: var(--warning);
+    --field-border: var(--warning);
+    --field-light: var(--warning-light);
+  }
+
+  .success {
+    --field-label: var(--success);
+    --field-focus-label: var(--success);
+    --field-border: var(--success);
+    --field-light: var(--success-light);
   }
 
   .container {
@@ -58,31 +70,17 @@
     align-items: center;
     border-radius: 4px;
     transition: all 200ms;
-    border: solid 1px var(--grey);
+    border: solid 1px var(--field-border);
     box-shadow: var(--grey) 0px 1px 2px inset;
   }
 
-  .root.error > .container {
-    border: 1px solid var(--error-light);
-    background-color: var(--error-xlight);
-  }
-
-  .root.hasFocus > .container {
-    border-color: var(--primary);
-    box-shadow: var(--grey) 0px 1px 2px inset, var(--primary-light) 0 0 0 3px;
-  }
-
-  .root.error.hasFocus > .container {
-    border-color: var(--error);
-    box-shadow: var(--grey) 0px 1px 2px inset, var(--error-light) 0 0 0 3px;
-  }
-
-  .root.error > .message {
-    color: var(--error);
+  .root:focus-within > .container {
+    border-color: var(--field-focus-label);
+    box-shadow: var(--grey) 0px 1px 2px inset, var(--field-light) 0 0 0 3px;
   }
 
   .message {
-    color: var(--grey-dark);
+    color: var(--field-label);
     margin-top: 4px;
     font-size: 14px;
   }
@@ -92,16 +90,16 @@
   }
 </style>
 
-<div class="root" class:error class:hasFocus>
+<div
+  class="root"
+  class:error={status === 'error'}
+  class:warning={status === 'warning'}
+  class:success={status === 'success'}
+  class:default={status === 'default'}>
   {#if label}<label class:skeleton for={id}>{label}</label>{/if}
   {#if !skeleton}
     <div class="container">
-      <input
-        {id}
-        {type}
-        {placeholder}
-        on:blur={handleBlur}
-        on:focus={handleFocus} />
+      <input {id} {type} {placeholder} on:blur on:focus on:change />
     </div>
   {/if}
   {#if skeleton}

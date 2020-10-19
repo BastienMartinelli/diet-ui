@@ -17,7 +17,9 @@
     <Field label="Name" />
     <Field label="Password" type="password" />
     <Field label="With message" message="That's my message" type="password" />
-    <Field label="In error" error message="message in error" />
+    <Field label="In error" status="error" message="message in error" />
+    <Field label="Warning" status="warning" message="warning message" />
+    <Field label="Success" status="success" message="success message" />
     <Field skeleton label="skeleton" message="with a message" />
     <Button>submit</Button>
   </Box>
