@@ -1,21 +1,29 @@
 import { Button } from "../";
-import ButtonGroupExample from "./ButtonGroupExample"
+import ButtonExample from "./ButtonExample"
 
 export default {
   title: 'Example/Button',
+  Component: Button,
 };
 
 export const Default = () => ({
   Component: Button,
 });
 
-export const Group = () => ({
-  Component: ButtonGroupExample
-})
+export const All = () => ({
+  Component: ButtonExample
+});
 
 export const Skeleton = () => ({
   Component: Button,
-  args: {
+  props: {
     skeleton: true,
   }
-})
+});
+
+export const Loading = () => ({
+  Component: Button,
+  props: {
+    loading: true,
+  }
+});

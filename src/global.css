@@ -4,6 +4,7 @@ html {
   --primary-light: #A6AFFC;
   --primary-xlight: #E5E8FB;
 
+  --error-dark: #ff4b66;
   --error: #FF647C;
   --error-light: #FDAFBC;
   --error-xlight: #FAE4E7;
@@ -14,9 +15,23 @@ html {
   --grey-light: #F6F4F9;
   --white: #FFFFFF;
 
+  --success-dark: #01a778;
+  --success: #00C48C;
+  --success-light: #7CDFC3;
+  --success-xlight: #D5F2EA;
+
+  --secondary-dark: #bb36f8;
+  --secondary: #BE52F2;
+  --secondary-light: #DBA5F5;
+  --secondary-xlight: #EFDFF2;
+
+  --warning-dark: #ff8e4d;
+  --warning: #FFA26B;
+  --warning-light: #FFC7A6;
+  --warning-xlight: #FFE8DA;
+
   --contrast:#fff;
 
-  --secondary: #fff;
   --text-contrast: #fff;
   --text-primary: #000;
   --text-secondary: grey;
