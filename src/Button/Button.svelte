@@ -1,7 +1,5 @@
 <script lang="ts">
-  import Box from "../Box";
   import Loader from "../Loader/Loader.svelte";
-  import ButtonExample from "./ButtonExample.svelte";
 
   type Variants = "filled" | "light" | "outlined";
 
@@ -45,10 +43,16 @@
     box-shadow: 0 0 0 1px var(--btn-primary-dark);
   }
 
+  .btn:hover {
+    box-shadow: 0 0 0 1px var(--btn-primary-dark),
+      0px 7px 64px rgba(0, 0, 0, 0.05);
+  }
+
   .btn:focus {
     outline: none;
     z-index: 1;
-    box-shadow: var(--btn-primary-light) 0 0 0 3px;
+    box-shadow: var(--btn-primary-light) 0 0 0 3px,
+      0px 7px 64px rgba(0, 0, 0, 0.07);
   }
 
   .btn:active {
@@ -88,6 +92,8 @@
 
   .btn.loading {
     color: transparent;
+    text-shadow: none !important;
+    color: transparent !important;
   }
 
   .loader-container {
@@ -131,6 +137,10 @@
     min-width: 32px;
   }
 
+  .btn.filled {
+    text-shadow: 0px 0px 2px var(--btn-primary-dark);
+  }
+
   .btn.outlined {
     background-color: transparent;
     color: var(--btn-primary);
@@ -161,40 +171,37 @@
     background-color: var(--grey) !important;
     box-shadow: none;
     pointer-events: none;
+    text-shadow: none;
   }
 </style>
 
 <button
-  class="btn"
+  {...$$props}
+  class="btn {$$props.class} {variant} {color}"
   class:skeleton
   class:loading
   class:rounded
-  class:outlined={variant === 'outlined'}
-  class:light={variant === 'light'}
-  class:error={color === 'error'}
-  class:primary={color === 'primary'}
-  class:warning={color === 'warning'}
-  class:success={color === 'success'}
-  class:secondary={color === 'secondary'}
   class:with-before={!!$$slots.before}
   class:with-after={!!$$slots.after}
   class:icon
   tabindex={tabIndex}
   aria-disabled={disabled}
   on:click
-  on:blur
-  {...$$props}>
+  on:blur>
   {#if loading}
     <div class="loader-container">
       <Loader height="24px" />
     </div>
   {/if}
+
   {#if $$slots.before}
     <span class="before-el">
       <slot name="before" />
     </span>
   {/if}
+
   <slot>button</slot>
+
   {#if $$slots.after}
     <span class="after-el">
       <slot name="after" />
