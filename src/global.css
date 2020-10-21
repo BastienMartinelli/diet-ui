@@ -38,6 +38,13 @@
 
   --border-radius: 8px;
 
+  --z-index-stepper: 1000;
+  --z-index-navbar: 1100;
+  --z-index-drawer: 1200;
+  --z-index-modal: 1300;
+  --z-index-snackbar: 1400;
+  --z-index-tooltip: 1500;
+
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -48,6 +55,7 @@
   pointer-events: none;
   user-select: none;
   background-image: none !important;
+  text-shadow: none !important;
 }
 
 @keyframes glow {

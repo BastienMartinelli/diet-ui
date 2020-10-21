@@ -7,6 +7,8 @@
   export let direction: "row" | "column" = "row";
   export let stack = false;
   export let rounded = true;
+  export let fullwidth = false;
+  export let fullheight = false;
 </script>
 
 <style>
@@ -63,6 +65,14 @@
   .box.rounded {
     border-radius: var(--border-radius);
   }
+
+  .fullwidth {
+    width: 100%;
+  }
+
+  .fullheight {
+    height: 100%;
+  }
 </style>
 
 <div
@@ -74,6 +84,8 @@
   class:flex
   class:direction
   class:stack
-  class:rounded>
+  class:rounded
+  class:fullwidth
+  class:fullheight>
   <slot />
 </div>
