@@ -10,6 +10,7 @@
   export let message = "";
   export let skeleton = false;
   export let status: Status = "default";
+  export let gutter = false;
 </script>
 
 <style>
@@ -71,12 +72,16 @@
     border-radius: 4px;
     transition: all 200ms;
     border: solid 1px var(--field-border);
-    box-shadow: var(--grey) 0px 1px 2px inset;
+  }
+
+  .container:hover {
+    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.05);
   }
 
   .container:focus-within {
     border-color: var(--field-focus-label);
-    box-shadow: var(--grey) 0px 1px 2px inset, var(--field-light) 0 0 0 3px;
+    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07), var(--grey) 0px 1px 2px inset,
+      var(--field-light) 0 0 0 3px;
   }
 
   .root:focus-within > label {
@@ -92,18 +97,37 @@
   div.skeleton-input {
     height: 32px;
   }
+
+  .before-el {
+    color: var(--field-label);
+    margin-left: 8px;
+  }
+
+  .after-el {
+    color: var(--field-label);
+    margin-right: 8px;
+  }
+
+  .gutter {
+    margin-bottom: 12px;
+  }
 </style>
 
-<div
-  class="root"
-  class:error={status === 'error'}
-  class:warning={status === 'warning'}
-  class:success={status === 'success'}
-  class:default={status === 'default'}>
+<div class="root {status}" class:gutter>
   {#if label}<label class:skeleton for={id}>{label}</label>{/if}
   {#if !skeleton}
     <div class="container">
+      {#if $$slots.before}
+        <span class="before-el">
+          <slot name="before" />
+        </span>
+      {/if}
       <input {id} {type} {placeholder} on:blur on:focus on:change />
+      {#if $$slots.after}
+        <span class="after-el">
+          <slot name="after" />
+        </span>
+      {/if}
     </div>
   {/if}
   {#if skeleton}

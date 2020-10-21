@@ -1,5 +1,6 @@
 <script>
-  import { Field, Box, Button } from "../";
+  import { Field } from "../";
+  import Button from "../Button";
 </script>
 
 <style>
@@ -7,13 +8,13 @@
     max-width: 400px;
   }
 
-  :global(.form-box > *:not(:first-child)) {
+  .form-box > :global(*:not(:first-child)) {
     margin-top: 16px;
   }
 </style>
 
 <form on:submit|preventDefault={() => {}}>
-  <Box class="form-box" padding shadow>
+  <div class="form-box">
     <Field label="Name" />
     <Field label="Password" type="password" />
     <Field label="With message" message="That's my message" type="password" />
@@ -21,6 +22,9 @@
     <Field label="Warning" status="warning" message="warning message" />
     <Field label="Success" status="success" message="success message" />
     <Field skeleton label="skeleton" message="with a message" />
-    <Button>submit</Button>
-  </Box>
+    <Field label="With elements" message="slots before and after">
+      <i slot="before" class="fas fa-star" />
+      <i slot="after" class="fas fa-star" />
+    </Field>
+  </div>
 </form>
