@@ -36,6 +36,8 @@
   --text-primary: #000;
   --text-secondary: grey;
 
+  --shadow: 0 0.25rem 1rem var(--grey);
+
   --border-radius: 8px;
 
   --z-index-stepper: 1000;

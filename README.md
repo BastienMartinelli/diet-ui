@@ -19,7 +19,7 @@ A simple yet powerfull svelte components library.
 - ⬜️ Radio
 - ⬜️ NavBar
 - 🔥 TrapFocus
-- ⬜️ Drawer
+- 🔥 Drawer
 - 🔥 Modal
 - ⬜️ Tabs
 - ✅ Portal

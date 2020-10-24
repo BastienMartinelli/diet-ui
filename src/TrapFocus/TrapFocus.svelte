@@ -30,7 +30,6 @@
 
   onMount(() => {
     document.addEventListener("focus", onFocusForTrap, true);
-
     if (autofocus) {
       focusFirstDescendant(containerNode, false);
     }
@@ -39,6 +38,10 @@
   onDestroy(() => {
     document.removeEventListener("focus", onFocusForTrap, true);
   });
+
+  $: if (autofocus) {
+    focusFirstDescendant(containerNode, false);
+  }
 </script>
 
 <div bind:this={startNode} tabindex="0" />
