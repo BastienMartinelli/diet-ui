@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onDestroy } from "svelte";
 
   export let disabled = false;
   export let root = document?.body;
@@ -14,24 +14,17 @@
   }
 
   function destroyPortal() {
-    console.log("ok");
-    console.log(root);
-    console.log(portal);
     if (root && portal) {
       root.removeChild(portal);
       portal = null;
     }
   }
 
-  onMount(() => {
-    return () => {
-      destroyPortal();
-    };
-  });
+  onDestroy(destroyPortal);
 
   $: if (disabled) {
     destroyPortal();
-  } else if (!portal) {
+  } else if (!portal && node) {
     createPortal();
   }
 </script>

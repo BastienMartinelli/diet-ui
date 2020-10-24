@@ -6,6 +6,8 @@
   import Close from "../icons/Close.svelte";
   import TrapFocus from "../TrapFocus/TrapFocus.svelte";
 
+  export let open = false;
+
   const dispatch = createEventDispatcher();
 
   function handleKeydown(e: KeyboardEvent) {
@@ -21,8 +23,6 @@
   onDestroy(() => {
     window.removeEventListener("keydown", handleKeydown);
   });
-
-  export let open = false;
 </script>
 
 <style>
@@ -81,7 +81,7 @@
   }
 </style>
 
-<Portal disabled={!open}>
+<Portal>
   {#if open}
     <div transition:fade={{ duration: 100 }} class="overlay" />
     <div class="container" on:click={() => dispatch('close')}>

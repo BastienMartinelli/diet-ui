@@ -33,4 +33,4 @@ A simple yet powerfull svelte components library.
 - ⬜️ Pagination
 - ⬜️ Table
 - ⬜️ Switch
-- ⬜️ Tooltip
+- ✅ Tooltip
