@@ -7,5 +7,4 @@ export { default as Box } from "./Box";
 export { default as Modal } from "./Modal";
 export { default as Loader } from "./Loader";
 export { default as TrapFocus } from "./TrapFocus";
-
-export { default as portal } from "./actions/portal";
+export { default as Portal } from "./Portal";

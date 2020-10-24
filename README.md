@@ -22,7 +22,7 @@ A simple yet powerfull svelte components library.
 - ⬜️ Drawer
 - 🔥 Modal
 - ⬜️ Tabs
-- ⬜️ Portal
+- ✅ Portal
 - ⬜️ Dropdown
 - ⬜️ Select
 - ⬜️ DatePicker

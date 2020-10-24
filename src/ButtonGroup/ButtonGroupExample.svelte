@@ -1,6 +1,5 @@
 <script lang="ts">
   import { ButtonGroup, Button } from "../";
-  import portal from "../actions/portal";
 
   let active = 1;
 

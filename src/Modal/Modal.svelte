@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import { fade } from "svelte/transition";
-  import portal from "../actions/portal";
+  import Portal from "../Portal";
   import Button from "../Button";
   import Close from "../icons/Close.svelte";
   import TrapFocus from "../TrapFocus/TrapFocus.svelte";
@@ -81,7 +81,7 @@
   }
 </style>
 
-<div use:portal={open}>
+<Portal disabled={!open}>
   {#if open}
     <div transition:fade={{ duration: 100 }} class="overlay" />
     <div class="container" on:click={() => dispatch('close')}>
@@ -107,4 +107,4 @@
       </div>
     </div>
   {/if}
-</div>
+</Portal>

@@ -176,7 +176,7 @@
 </style>
 
 <button
-  {...$$props}
+  {...$$restProps}
   class="btn {$$props.class} {variant} {color}"
   class:skeleton
   class:loading
