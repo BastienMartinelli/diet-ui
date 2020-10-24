@@ -60,9 +60,9 @@
   class="container"
   bind:this={anchorEl}
   on:mouseenter={open}
-  on:focus={open}
+  on:focusin={open}
   on:mouseleave={close}
-  on:blur={close}>
+  on:focusout={close}>
   <slot />
 </span>
 <Portal>
