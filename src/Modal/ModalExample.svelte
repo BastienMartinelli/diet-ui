@@ -1,7 +1,7 @@
 <script>
   import Box from "../Box";
   import Button from "../Button";
-  import Field from "../Field";
+  import TextField from "../TextField";
   import Modal from "./Modal.svelte";
 
   let open = false;
@@ -27,8 +27,8 @@
   </div>
   <div slot="content">
     <Box padding>
-      <Field label="name" gutter />
-      <Field type="number" label="age" gutter />
+      <TextField label="name" gutter />
+      <TextField type="number" label="age" gutter />
     </Box>
   </div>
   <div slot="footer" class="footer">

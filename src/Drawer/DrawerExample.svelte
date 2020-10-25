@@ -10,6 +10,7 @@
 </script>
 
 <style>
+  div.button-container > :global(* > div),
   div.button-container > :global(button) {
     margin-top: 16px;
   }

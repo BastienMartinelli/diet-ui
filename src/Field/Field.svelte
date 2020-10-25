@@ -1,12 +1,12 @@
+<script context="module" lang="ts">
+  export type Status = "default" | "error" | "success" | "warning";
+</script>
+
 <script lang="ts">
   import createId from "../utils/createId";
 
-  type Status = "default" | "error" | "success" | "warning";
-
-  export let placeholder = "";
   export let id = createId();
   export let label = "";
-  export let type = "text";
   export let message = "";
   export let skeleton = false;
   export let status: Status = "default";
@@ -14,21 +14,22 @@
 </script>
 
 <style>
-  input {
+  .container > :global(input),
+  .container > :global(select) {
     box-sizing: border-box;
     appearance: none;
-    flex-grow: 1;
     background: transparent;
     border: none;
     height: 32px;
-    padding: 0 8px;
+    padding: 0;
+    width: 100%;
   }
 
-  input:focus {
+  .container > :global(*:focus) {
     outline: none;
   }
 
-  input::-ms-clear {
+  .input::-ms-clear {
     display: none;
   }
 
@@ -98,13 +99,10 @@
     height: 32px;
   }
 
-  .before-el {
+  .before-el > :global(*),
+  .after-el > :global(*) {
     color: var(--field-label);
     margin-left: 8px;
-  }
-
-  .after-el {
-    color: var(--field-label);
     margin-right: 8px;
   }
 
@@ -113,21 +111,17 @@
   }
 </style>
 
-<div class="root {status}" class:gutter>
+<div {...$$restProps} class="root {status} {$$restProps.class}" class:gutter>
   {#if label}<label class:skeleton for={id}>{label}</label>{/if}
   {#if !skeleton}
     <div class="container">
-      {#if $$slots.before}
-        <span class="before-el">
-          <slot name="before" />
-        </span>
-      {/if}
-      <input {id} {type} {placeholder} on:blur on:focus on:change />
-      {#if $$slots.after}
-        <span class="after-el">
-          <slot name="after" />
-        </span>
-      {/if}
+      <span class="before-el">
+        <slot name="before" />
+      </span>
+      <slot />
+      <span class="after-el">
+        <slot name="after" />
+      </span>
     </div>
   {/if}
   {#if skeleton}
