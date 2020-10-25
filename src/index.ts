@@ -9,3 +9,6 @@ export { default as Loader } from "./Loader";
 export { default as TrapFocus } from "./TrapFocus";
 export { default as Portal } from "./Portal";
 export { default as Tooltip } from "./Tooltip";
+export { default as TextFIeld } from "./TextField";
+export { default as Select } from "./Select";
+export { default as Accordion } from "./Accordion";

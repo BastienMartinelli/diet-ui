@@ -6,7 +6,7 @@
   export let grow = false;
   export let direction: "row" | "column" = "row";
   export let stack = false;
-  export let rounded = true;
+  export let rounded = false;
   export let fullwidth = false;
   export let fullheight = false;
 </script>
@@ -64,6 +64,7 @@
 
   .box.rounded {
     border-radius: var(--border-radius);
+    padding: 6px 0 6px 0;
   }
 
   .fullwidth {
