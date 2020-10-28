@@ -14,6 +14,7 @@ A simple yet powerfull svelte components library.
 - 🔥 Button
 - 🔥 ButtonGroup
 - 🔥 Box
+- ✅ Divider
 - ⬜️ Checkbox
 - ⬜️ CheckboxGroup
 - ⬜️ Radio
