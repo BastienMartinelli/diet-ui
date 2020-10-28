@@ -9,15 +9,25 @@
 
   export let open = null;
   export let triggerEl: HTMLElement = null;
+  export let autofocus = false;
 
   let innerOpen = false;
-  let lastEl = null;
   let containerEl: HTMLDivElement = null;
 
   const dispatch = createEventDispatcher();
 
-  function handleFocusLastEl() {
-    attemptFocus(triggerEl);
+  function handleClose() {
+    if (open !== null) {
+      dispatch("close");
+    } else {
+      innerOpen = false;
+    }
+  }
+
+  function focusTrigger() {
+    if (triggerEl && !attemptFocus(triggerEl)) {
+      focusFirstDescendant(triggerEl);
+    }
   }
 
   function handleClick(e: UIEvent) {
@@ -25,20 +35,35 @@
       !containerEl?.contains(e.target as Element) &&
       !triggerEl?.contains(e.target as Element)
     ) {
-      if (open !== null) {
-        dispatch("close");
-      } else {
-        innerOpen = false;
-      }
+      handleClose();
+    }
+  }
+
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === "Escape") {
+      handleClose();
+      focusTrigger();
+    }
+  }
+
+  function handleFocus(e: FocusEvent) {
+    const el = document.activeElement;
+    if (!containerEl?.contains(el) && !triggerEl?.contains(el)) {
+      handleClose();
+      focusTrigger();
     }
   }
 
   $: isOpened = open === null ? innerOpen : open;
 
-  $: if (isOpened) {
-    window.addEventListener("click", handleClick);
+  $: if (isOpened && containerEl) {
+    document.addEventListener("click", handleClick);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("focusin", handleFocus);
   } else {
-    window.removeEventListener("click", handleClick);
+    document.removeEventListener("click", handleClick);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("focusin", handleFocus);
   }
 
   $: if (isOpened && triggerEl && containerEl) {
@@ -55,7 +80,7 @@
     });
   }
 
-  $: if (containerEl) {
+  $: if (containerEl && autofocus) {
     focusFirstDescendant(containerEl);
   }
 </script>
@@ -97,7 +122,6 @@
       class="container"
       bind:this={containerEl}>
       <slot />
-      <div tabindex="0" bind:this={lastEl} on:focus={handleFocusLastEl} />
     </div>
   {/if}
 </Portal>

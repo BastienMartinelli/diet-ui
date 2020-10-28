@@ -21,7 +21,7 @@
     </Menu>
   </Dropdown>
 
-  <Dropdown {open} on:close={() => (open = false)}>
+  <Dropdown {open} on:close={() => (open = false)} autofocus>
     <span slot="trigger">
       <Button on:click={() => (open = !open)}>button</Button>
     </span>
