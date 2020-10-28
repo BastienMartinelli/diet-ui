@@ -37,13 +37,14 @@
     display: inline-block;
     margin-bottom: 4px;
     color: var(--field-label);
+    transition: color 200ms;
   }
 
   .default {
-    --field-label: var(--grey-dark);
-    --field-focus-label: var(--primary);
+    --field-label: var(--black);
+    --field-focus-label: var(--outline);
     --field-border: var(--grey);
-    --field-light: var(--primary-light);
+    --field-light: var(--outline);
   }
 
   .error {
@@ -76,13 +77,13 @@
   }
 
   .container:hover {
-    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.1);
   }
 
   .container:focus-within {
     border-color: var(--field-focus-label);
     box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07), var(--grey) 0px 1px 2px inset,
-      var(--field-light) 0 0 0 3px;
+      var(--field-light) 0 0 0 2px;
   }
 
   .root:focus-within > label {

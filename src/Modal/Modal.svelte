@@ -61,8 +61,8 @@
 
   .close-modal {
     position: absolute;
-    right: 4px;
-    top: 4px;
+    right: 6px;
+    top: 6px;
   }
 
   .header {
@@ -71,7 +71,8 @@
     height: 50px;
     font-size: 16px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: bold;
+    margin-top: 6px;
   }
 
   .footer {
@@ -92,7 +93,8 @@
               on:click={() => dispatch('close')}
               icon
               rounded
-              variant="light">
+              variant="light"
+              color="none">
               <Close height="12px" width="12px" />
             </Button>
           </span>

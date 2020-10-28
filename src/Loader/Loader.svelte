@@ -6,7 +6,7 @@
 
 <style>
   .contrast {
-    fill: var(--contrast);
+    fill: var(--white);
   }
 
   .primary {

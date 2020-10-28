@@ -18,19 +18,17 @@
     text-transform: uppercase;
     background-color: transparent;
     transition: background-color 200ms, box-shadow 200ms;
-    background-color: var(--grey-light);
+    font-weight: bold;
   }
 
   .header:hover {
     background-color: var(--grey-light);
-    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
   }
 
   .header:focus {
     outline: none;
     z-index: 1;
-    box-shadow: inset var(--primary-light) 0 0 0 3px,
-      0px 7px 64px rgba(0, 0, 0, 0.07);
+    box-shadow: inset var(--outline) 0 0 0 2px;
   }
 
   .separator {

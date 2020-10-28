@@ -32,13 +32,19 @@
   </ButtonGroup>
 
   <ButtonGroup>
-    <Button color="secondary" variant="light" rounded>
+    <Button variant="light" rounded>
       <i slot="before" class="fas fa-star" />Action 1
     </Button>
     <Button variant="light" rounded>
       <i slot="before" class="fas fa-save" />Action 2
     </Button>
-    <Button color="warning" variant="light" rounded>Action 3</Button>
+    <Button variant="light" rounded>Action 3</Button>
+  </ButtonGroup>
+
+  <ButtonGroup>
+    <Button skeleton><i slot="before" class="fas fa-star" />Action 1</Button>
+    <Button skeleton><i slot="before" class="fas fa-save" />Action 2</Button>
+    <Button skeleton>Action 3</Button>
   </ButtonGroup>
 
   <ButtonGroup>

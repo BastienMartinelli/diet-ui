@@ -24,6 +24,7 @@
     <Button color="error">error</Button>
     <Button color="warning">warning</Button>
     <Button color="success">success</Button>
+    <Button color="none">none</Button>
   </div>
 
   <div class="buttons-stack">
@@ -32,6 +33,7 @@
     <Button variant="outlined" color="error">Outlined</Button>
     <Button variant="outlined" color="warning">Outlined</Button>
     <Button variant="outlined" color="success">Outlined</Button>
+    <Button variant="outlined" color="none">Outlined</Button>
   </div>
 
   <div class="buttons-stack">
@@ -40,20 +42,20 @@
     <Button variant="light" color="error">Light</Button>
     <Button variant="light" color="warning">Light</Button>
     <Button variant="light" color="success">Light</Button>
+    <Button variant="light" color="none">Outlined</Button>
   </div>
 
   <div class="buttons-stack">
     <Button skeleton>button</Button>
-    <ButtonGroup>
-      <Button skeleton><i slot="before" class="fas fa-star" />Action 1</Button>
-      <Button skeleton><i slot="before" class="fas fa-save" />Action 2</Button>
-      <Button skeleton>Action 3</Button>
-    </ButtonGroup>
-    <Button skeleton rounded icon><i class="fas fa-star" /></Button>
+    <Button skeleton variant="outlined">button</Button>
+    <Button skeleton variant="light">button</Button>
+    <Button rounded icon skeleton><i class="fas fa-star" /></Button>
   </div>
 
   <div class="buttons-stack">
     <Button loading>button</Button>
+    <Button loading variant="outlined">button</Button>
+    <Button loading variant="light">button</Button>
     <Button rounded icon loading><i class="fas fa-star" /></Button>
   </div>
 
