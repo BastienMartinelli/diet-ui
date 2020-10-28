@@ -23,8 +23,9 @@ A simple yet powerfull svelte components library.
 - 🔥 Modal
 - ⬜️ Tabs
 - ✅ Portal
-- ⬜️ Dropdown
-- ⬜️ SelectNative
+- 🔥 Dropdown
+- 🔥 SelectButton
+- 🔥 Select
 - ⬜️ DatePicker
 - ⬜️ Badge
 - ⬜️ Chip
@@ -33,4 +34,5 @@ A simple yet powerfull svelte components library.
 - ⬜️ Pagination
 - ⬜️ Table
 - ⬜️ Switch
+- 🔥 Accordion
 - ✅ Tooltip
