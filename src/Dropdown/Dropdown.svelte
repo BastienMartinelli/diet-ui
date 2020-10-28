@@ -1,6 +1,6 @@
 <script lang="ts">
   import Portal from "../Portal";
-  import { attemptFocus } from "../utils/focusUtils";
+  import { attemptFocus, focusFirstDescendant } from "../utils/focusUtils";
   import { slide } from "svelte/transition";
   import { createPopper, Placement } from "@popperjs/core";
   import { createEventDispatcher } from "svelte";
@@ -8,9 +8,10 @@
   export let placement: Placement = "bottom";
 
   export let open = null;
+  export let triggerEl: HTMLElement = null;
+
   let innerOpen = false;
   let lastEl = null;
-  let triggerEl: HTMLSpanElement = null;
   let containerEl: HTMLDivElement = null;
 
   const dispatch = createEventDispatcher();
@@ -52,6 +53,10 @@
         },
       ],
     });
+  }
+
+  $: if (containerEl) {
+    focusFirstDescendant(containerEl);
   }
 </script>
 

@@ -24,7 +24,7 @@ A simple yet powerfull svelte components library.
 - ⬜️ Tabs
 - ✅ Portal
 - ⬜️ Dropdown
-- ⬜️ Select
+- ⬜️ SelectNative
 - ⬜️ DatePicker
 - ⬜️ Badge
 - ⬜️ Chip

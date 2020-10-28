@@ -9,6 +9,9 @@
   export let rounded = false;
   export let fullwidth = false;
   export let fullheight = false;
+  export let row = false;
+  export let column = false;
+  export let spacing: 0 | 1 | 2 | 3 | 4 = 1;
 </script>
 
 <style>
@@ -52,14 +55,21 @@
     flex-direction: row-reverse;
   }
 
-  .box.stack {
+  .box.stack.row {
     display: flex;
-    align-items: center;
-    margin-left: -8px;
+    margin-left: -var(--box-spacing);
   }
 
-  :global(.box.stack > *) {
-    margin-left: 8px;
+  .box.stack.column {
+    margin-top: -var(--box-spacing);
+  }
+
+  .box.stack.row > :global(*) {
+    margin-left: var(--box-spacing);
+  }
+
+  .box.stack.column > :global(*) {
+    margin-top: var(--box-spacing);
   }
 
   .box.rounded {
@@ -74,10 +84,38 @@
   .fullheight {
     height: 100%;
   }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .box.column {
+    flex-direction: column;
+  }
+
+  .spacing-0 {
+    --box-spacing: 0px;
+  }
+
+  .spacing-1 {
+    --box-spacing: 4px;
+  }
+
+  .spacing-2 {
+    --box-spacing: 8px;
+  }
+
+  .spacing-3 {
+    --box-spacing: 12px;
+  }
+
+  .spacing-4 {
+    --box-spacing: 16px;
+  }
 </style>
 
 <div
-  class="box {$$props.class}"
+  class="box {$$props.class} {`spacing-${spacing}`}"
   class:shadow
   class:border
   class:padding
@@ -87,6 +125,8 @@
   class:stack
   class:rounded
   class:fullwidth
-  class:fullheight>
+  class:fullheight
+  class:column
+  class:row>
   <slot />
 </div>

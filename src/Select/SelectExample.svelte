@@ -1,5 +1,8 @@
 <script lang="ts">
-  import Select, { Option } from "./Select.svelte";
+  import type { Option } from "../SelectNative/SelectNative.svelte";
+  import Select from "./Select.svelte";
+
+  let value: Option = null;
 
   const options: Option[] = [
     { value: "DMB", label: "Dimebag Darell" },
@@ -7,54 +10,15 @@
     { value: "REX", label: "Rex Brown" },
     { value: "VIN", label: "Vinnie Paul" },
   ];
-
-  let value = "VIN";
 </script>
 
 <style>
-  form {
-    max-width: 400px;
-  }
-
-  .form-box > :global(*:not(:first-child)) {
-    margin-top: 16px;
+  .select-example-container > :global(*) {
+    margin-top: 12px;
   }
 </style>
 
-<form on:submit|preventDefault={() => {}}>
-  <div class="form-box">
-    <Select bind:value label="Name" {options} />
-    <Select
-      bind:value
-      label="In error"
-      status="error"
-      message="message in error"
-      {options} />
-    <Select
-      bind:value
-      label="Warning"
-      status="warning"
-      message="warning message"
-      {options} />
-    <Select
-      bind:value
-      label="Success"
-      status="success"
-      message="success message"
-      {options} />
-    <Select
-      bind:value
-      skeleton
-      label="skeleton"
-      message="with a message"
-      {options} />
-    <Select
-      bind:value
-      label="With elements"
-      message="slots before and after"
-      {options}>
-      <i slot="before" class="fas fa-star" />
-      <i slot="after" class="fas fa-star" />
-    </Select>
-  </div>
-</form>
+<div class="select-example-container">
+  <Select bind:value label="Select one" {options} />
+  <Select bind:value native label="Native select" {options} />
+</div>

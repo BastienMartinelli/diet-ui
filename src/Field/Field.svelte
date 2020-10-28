@@ -11,16 +11,23 @@
   export let skeleton = false;
   export let status: Status = "default";
   export let gutter = false;
+  export let containerEl = null;
 </script>
 
 <style>
+  .container {
+    min-height: 32px;
+    width: 100%;
+  }
+
   .container > :global(input),
-  .container > :global(select) {
+  .container > :global(select),
+  .container > :global(button) {
     box-sizing: border-box;
     appearance: none;
     background: transparent;
     border: none;
-    height: 32px;
+    min-height: 100%;
     padding: 0;
     width: 100%;
   }
@@ -112,7 +119,11 @@
   }
 </style>
 
-<div {...$$restProps} class="root {status} {$$restProps.class}" class:gutter>
+<div
+  {...$$restProps}
+  class="root {status} {$$restProps.class}"
+  class:gutter
+  bind:this={containerEl}>
   {#if label}<label class:skeleton for={id}>{label}</label>{/if}
   {#if !skeleton}
     <div class="container">

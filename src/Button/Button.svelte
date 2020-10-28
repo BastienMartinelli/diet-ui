@@ -14,6 +14,7 @@
   export let skeleton = false;
   export let loading = false;
   export let rounded = false;
+  export let block = false;
   export let variant: Variants = "filled";
   export let icon = false;
   export let disabled = false;
@@ -204,6 +205,10 @@
   .loader-container > :global(* > *) {
     fill: var(--btn-text) !important;
   }
+
+  .block {
+    width: 100%;
+  }
 </style>
 
 <button
@@ -212,6 +217,7 @@
   class:skeleton
   class:loading
   class:rounded
+  class:block
   class:with-before={!!$$slots.before}
   class:with-after={!!$$slots.after}
   class:icon

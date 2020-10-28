@@ -11,4 +11,5 @@ export { default as Portal } from "./Portal";
 export { default as Tooltip } from "./Tooltip";
 export { default as TextFIeld } from "./TextField";
 export { default as Select } from "./Select";
+export { default as SelectButton } from "./SelectButton";
 export { default as Accordion } from "./Accordion";
