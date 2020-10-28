@@ -10,9 +10,8 @@
   export let position: "left" | "right" | "top" | "bottom" = "left";
   export let noOverlay = false;
   export let persistent = false;
-  export let triggerEl = null;
-
-  let container: HTMLDivElement = null;
+  export let triggerEl: Element = null;
+  export let ref: HTMLDivElement = null;
   let bodyStyle = null;
   let autofocus = false;
 
@@ -44,7 +43,7 @@
   }
 
   function handleClick(e: MouseEvent) {
-    if (!persistent && container && !container.contains(e.target as Node)) {
+    if (!persistent && ref && !ref.contains(e.target as Node)) {
       dispatch("close");
     }
   }
@@ -161,7 +160,7 @@
     <div
       {...$$restProps}
       class="container {position} {$$props.class}"
-      bind:this={container}
+      bind:this={ref}
       transition:fly={{ ...transitionOpts[position], duration: 200, opacity: 1 }}
       on:outroend={reinit}
       on:introend={() => (autofocus = true)}>

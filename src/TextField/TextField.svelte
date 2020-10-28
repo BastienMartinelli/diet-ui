@@ -11,10 +11,13 @@
   export let gutter = false;
   export let value = "";
   export let rootClass = "";
+  export let fieldRef: HTMLDivElement = null;
+  export let ref: HTMLInputElement = null;
 </script>
 
 <Field
   class={rootClass}
+  bind:ref={fieldRef}
   bind:label
   bind:status
   bind:id
@@ -24,7 +27,14 @@
   <span slot="before">
     <slot name="before" />
   </span>
-  <input bind:value on:change on:blur on:focus {id} {...$$restProps} />
+  <input
+    {...$$restProps}
+    bind:this={ref}
+    bind:value
+    on:change
+    on:blur
+    on:focus
+    {id} />
   <span slot="after">
     <slot name="after" />
   </span>

@@ -20,6 +20,7 @@
   export let disabled = false;
   export let tabindex = null;
   export let color: Colors = "primary";
+  export let ref: HTMLButtonElement = null;
 
   const tabIndex = disabled || skeleton ? -1 : tabindex;
 </script>
@@ -212,6 +213,7 @@
 </style>
 
 <button
+  bind:this={ref}
   {...$$restProps}
   class="btn {$$props.class} {variant} {color}"
   class:skeleton

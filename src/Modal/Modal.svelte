@@ -5,14 +5,25 @@
   import Button from "../Button";
   import Close from "../icons/Close.svelte";
   import TrapFocus from "../TrapFocus/TrapFocus.svelte";
+  import { attemptFocus, focusFirstDescendant } from "../utils/focusUtils";
 
   export let open = false;
+  export let triggerEl: HTMLElement = null;
 
   const dispatch = createEventDispatcher();
 
   function handleKeydown(e: KeyboardEvent) {
     if (e.key === "Escape") {
       dispatch("close");
+    }
+  }
+
+  function handleFocusTrigger() {
+    if (!open && triggerEl) {
+      setTimeout(() => {
+        if (!attemptFocus(triggerEl)) focusFirstDescendant(triggerEl);
+      }, 0);
+      dispatch("outroend");
     }
   }
 
@@ -82,9 +93,15 @@
   }
 </style>
 
+{#if $$slots.trigger}
+  <slot name="trigger"><span bind:this={triggerEl} /></slot>
+{/if}
 <Portal>
   {#if open}
-    <div transition:fade={{ duration: 100 }} class="overlay" />
+    <div
+      transition:fade={{ duration: 100 }}
+      on:outroend={handleFocusTrigger}
+      class="overlay" />
     <div class="container" on:click={() => dispatch('close')}>
       <div class="modal-content" on:click|stopPropagation>
         <TrapFocus autofocus>

@@ -12,6 +12,7 @@
   export let row = false;
   export let column = false;
   export let spacing: 0 | 1 | 2 | 3 | 4 = 1;
+  export let ref: HTMLDivElement = null;
 </script>
 
 <style>
@@ -115,7 +116,8 @@
 </style>
 
 <div
-  class="box {$$props.class} {`spacing-${spacing}`}"
+  bind:this={ref}
+  class="box {$$props.class || ''} {`spacing-${spacing}`}"
   class:shadow
   class:border
   class:padding

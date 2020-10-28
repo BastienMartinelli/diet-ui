@@ -8,25 +8,32 @@
   import Dropdown from "../Dropdown/Dropdown.svelte";
   import Menu from "../Menu/Menu.svelte";
   import MenuItem from "../Menu/MenuItem.svelte";
+  import { attemptFocus, focusFirstDescendant } from "../utils/focusUtils";
 
   export let value: Option = null;
   export let options: Option[] = [];
 
   let open = false;
-  let menuEl = null;
+  let buttonEl = null;
 
   const dispatch = createEventDispatcher();
+
+  function closeAndRefocus() {
+    open = false;
+    if (!attemptFocus(buttonEl)) {
+      focusFirstDescendant(buttonEl);
+    }
+  }
 </script>
 
-<Dropdown {open} on:close={() => (open = false)}>
-  <span slot="trigger">
-    <Button on:click={() => (open = !open)} {...$$restProps}>
-      <slot />
-    </Button>
-  </span>
-  <Menu separator bind:this={menuEl}>
+<Button bind:ref={buttonEl} on:click={() => (open = !open)} {...$$restProps}>
+  <slot />
+</Button>
+<Dropdown triggerEl={buttonEl} autofocus {open} on:close={() => (open = false)}>
+  <Menu separator on:shift={closeAndRefocus}>
     {#each options as option}
       <MenuItem
+        active={value ? option.value === value.value : false}
         on:click={() => {
           open = false;
           value = option;

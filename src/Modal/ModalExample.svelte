@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
   import Box from "../Box";
   import Button from "../Button";
   import TextField from "../TextField";
   import Modal from "./Modal.svelte";
 
   let open = false;
+  let triggerEl: HTMLButtonElement = null;
 </script>
 
 <style>
@@ -20,8 +21,8 @@
   }
 </style>
 
-<Button on:click={() => (open = !open)}>open</Button>
-<Modal on:close={() => (open = false)} bind:open>
+<Button bind:ref={triggerEl} on:click={() => (open = !open)}>open</Button>
+<Modal on:close={() => (open = false)} bind:open {triggerEl}>
   <div slot="header">
     <Box padding>Modal Title</Box>
   </div>

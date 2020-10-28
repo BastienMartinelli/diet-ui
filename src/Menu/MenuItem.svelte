@@ -1,3 +1,7 @@
+<script lang="ts">
+  export let active = false;
+</script>
+
 <style>
   .item {
     display: flex;
@@ -31,8 +35,12 @@
     z-index: 1;
     box-shadow: var(--outline) 0 0 0 3px, 0px 7px 64px rgba(0, 0, 0, 0.07) !important;
   }
+
+  .active {
+    font-weight: bold;
+  }
 </style>
 
-<button class="item" on:click on:focus on:blur on:keydown>
+<button class="item" on:click on:focus on:blur on:keydown class:active>
   <slot />
 </button>

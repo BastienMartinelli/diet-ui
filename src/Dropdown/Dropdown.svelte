@@ -10,9 +10,9 @@
   export let open = null;
   export let triggerEl: HTMLElement = null;
   export let autofocus = false;
+  export let ref: HTMLDivElement = null;
 
   let innerOpen = false;
-  let containerEl: HTMLDivElement = null;
 
   const dispatch = createEventDispatcher();
 
@@ -32,7 +32,7 @@
 
   function handleClick(e: UIEvent) {
     if (
-      !containerEl?.contains(e.target as Element) &&
+      !ref?.contains(e.target as Element) &&
       !triggerEl?.contains(e.target as Element)
     ) {
       handleClose();
@@ -48,7 +48,7 @@
 
   function handleFocus(e: FocusEvent) {
     const el = document.activeElement;
-    if (!containerEl?.contains(el) && !triggerEl?.contains(el)) {
+    if (!ref?.contains(el) && !triggerEl?.contains(el)) {
       handleClose();
       focusTrigger();
     }
@@ -56,7 +56,7 @@
 
   $: isOpened = open === null ? innerOpen : open;
 
-  $: if (isOpened && containerEl) {
+  $: if (isOpened && ref) {
     document.addEventListener("click", handleClick);
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("focusin", handleFocus);
@@ -66,8 +66,8 @@
     document.removeEventListener("focusin", handleFocus);
   }
 
-  $: if (isOpened && triggerEl && containerEl) {
-    createPopper(triggerEl, containerEl, {
+  $: if (isOpened && triggerEl && ref) {
+    createPopper(triggerEl, ref, {
       placement,
       modifiers: [
         {
@@ -80,8 +80,8 @@
     });
   }
 
-  $: if (containerEl && autofocus) {
-    focusFirstDescendant(containerEl);
+  $: if (ref && autofocus) {
+    focusFirstDescendant(ref);
   }
 </script>
 
@@ -117,10 +117,7 @@
 {/if}
 <Portal>
   {#if isOpened}
-    <div
-      transition:slide={{ duration: 100 }}
-      class="container"
-      bind:this={containerEl}>
+    <div transition:slide={{ duration: 100 }} class="container" bind:this={ref}>
       <slot />
     </div>
   {/if}

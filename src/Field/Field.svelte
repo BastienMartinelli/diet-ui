@@ -11,7 +11,7 @@
   export let skeleton = false;
   export let status: Status = "default";
   export let gutter = false;
-  export let containerEl = null;
+  export let ref = null;
 </script>
 
 <style>
@@ -123,7 +123,7 @@
   {...$$restProps}
   class="root {status} {$$restProps.class}"
   class:gutter
-  bind:this={containerEl}>
+  bind:this={ref}>
   {#if label}<label class:skeleton for={id}>{label}</label>{/if}
   {#if !skeleton}
     <div class="container">

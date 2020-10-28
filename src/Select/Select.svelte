@@ -13,6 +13,7 @@
   import MenuItem from "../Menu/MenuItem.svelte";
   import Dropdown from "../Dropdown";
   import createId from "../utils/createId";
+  import { attemptFocus, focusFirstDescendant } from "../utils/focusUtils";
 
   const dispatch = createEventDispatcher();
 
@@ -28,11 +29,16 @@
   export let gutter = false;
 
   let open = false;
-
-  $: valueLabel = value?.label || "";
-
   let fieldContainerEl: HTMLDivElement = null;
 
+  function closeAndRefocus() {
+    open = false;
+    if (!attemptFocus(fieldContainerEl)) {
+      focusFirstDescendant(fieldContainerEl);
+    }
+  }
+
+  $: valueLabel = value?.label || "";
   $: width = fieldContainerEl?.getBoundingClientRect().width || 0;
 </script>
 
@@ -57,7 +63,7 @@
   bind:message
   bind:skeleton
   bind:gutter
-  bind:containerEl={fieldContainerEl}>
+  bind:ref={fieldContainerEl}>
   <span slot="before">
     <slot name="before" />
   </span>
@@ -78,12 +84,14 @@
   </span>
 </Field>
 <Dropdown
+  autofocus
   open={open && !native}
   on:close={() => (open = false)}
   bind:triggerEl={fieldContainerEl}>
-  <Menu separator style={`width: ${width}px`}>
+  <Menu separator style={`width: ${width}px`} on:shift={closeAndRefocus}>
     {#each options as option}
       <MenuItem
+        active={value ? option.value === value.value : false}
         on:click={() => {
           open = false;
           value = option;
