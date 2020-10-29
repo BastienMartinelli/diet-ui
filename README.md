@@ -34,6 +34,6 @@ A simple yet powerfull svelte components library.
 - ⬜️ Avatar
 - ⬜️ Pagination
 - ⬜️ Table
-- ⬜️ Switch
+- 🔥 Switch
 - 🔥 Accordion
 - ✅ Tooltip

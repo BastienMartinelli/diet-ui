@@ -4,7 +4,7 @@
 </script>
 
 <style>
-  :global(.box) {
+  :global(.divider-box) {
     height: 100px;
     width: 200px;
     display: flex;
@@ -20,28 +20,28 @@
 </style>
 
 horizontal
-<Box class="box" shadow column>
+<Box class="divider-box" shadow column>
   <div class="el" />
   <Divider />
   <div class="el" />
 </Box>
 
 vertical
-<Box class="box" shadow row>
+<Box class="divider-box" shadow row>
   <div class="el" />
   <Divider vertical />
   <div class="el" />
 </Box>
 
 horizontal gutter
-<Box class="box" shadow column>
+<Box class="divider-box" shadow column>
   <div class="el" />
   <Divider gutter />
   <div class="el" />
 </Box>
 
 vertical gutter spacing 4
-<Box class="box" shadow row>
+<Box class="divider-box" shadow row>
   <div class="el" />
   <Divider vertical gutter spacing={4} />
   <div class="el" />
