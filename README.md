@@ -9,31 +9,44 @@ A simple yet powerfull svelte components library.
 ⬜️: TODO
 
 
+- ✅ Tooltip
+- ✅ Portal
+- ✅ Divider
+- ✅ TrapFocus
+- 🔥 Menu
 - 🔥 Field
 - 🔥 Loader
 - 🔥 Button
 - 🔥 ButtonGroup
 - 🔥 Box
-- ✅ Divider
+- 🔥 TrapFocus
+- 🔥 Drawer
+- 🔥 Modal
+- 🔥 Dropdown
+- 🔥 SelectButton
+- 🔥 Select
+- 🔥 Switch
+- 🔥 Accordion
 - ⬜️ Checkbox
 - ⬜️ CheckboxGroup
 - ⬜️ Radio
 - ⬜️ NavBar
-- 🔥 TrapFocus
-- 🔥 Drawer
-- 🔥 Modal
 - ⬜️ Tabs
-- ✅ Portal
-- 🔥 Dropdown
-- 🔥 SelectButton
-- 🔥 Select
-- ⬜️ DatePicker
+- ⬜️ DatePicker(s)
 - ⬜️ Badge
 - ⬜️ Chip
 - ⬜️ Alert
 - ⬜️ Avatar
+- ⬜️ AvatarGroup
 - ⬜️ Pagination
 - ⬜️ Table
-- 🔥 Switch
-- 🔥 Accordion
-- ✅ Tooltip
+- ⬜️ Snackbar
+- ⬜️ List
+- ⬜️ Grid
+- ⬜️ Autocomplete
+- ⬜️ Stepper
+- ⬜️ VirtualList
+- ⬜️ Typography
+- ⬜️ TextArea
+- ⬜️ Navbar
+
