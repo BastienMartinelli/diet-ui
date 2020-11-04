@@ -27,7 +27,9 @@
       bind:value
       label="In error"
       status="error"
-      message="message in error" />
+      message="message in error">
+      <i slot="after" class="fas fa-times" />
+    </TextField>
     <TextField
       bind:value
       label="Warning"

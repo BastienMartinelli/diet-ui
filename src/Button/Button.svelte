@@ -106,9 +106,9 @@
   }
 
   .btn.none {
-    --btn-primary: var(--grey-dark);
+    --btn-primary: var(--grey);
     --btn-primary-light: var(--grey-light);
-    --btn-primary-dark: var(--grey-xdark);
+    --btn-primary-dark: var(--grey-dark);
     --btn-primary-xlight: var(--grey-xlight);
     --btn-contrast-text: var(--grey-contrast);
   }

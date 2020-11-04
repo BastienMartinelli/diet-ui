@@ -1,8 +1,10 @@
 <script lang="ts">
   import Box from "../Box";
   import Button from "../Button";
+  import Checkbox from "../Checkbox/Checkbox.svelte";
   import Menu from "../Menu/Menu.svelte";
   import MenuItem from "../Menu/MenuItem.svelte";
+  import Switch from "../Switch";
   import TextField from "../TextField";
   import Dropdown from "./Dropdown.svelte";
 
@@ -28,7 +30,19 @@
     <Box padding column>
       <TextField label="Name" gutter />
       <TextField label="Reason" gutter />
+      <Checkbox label="Remember me" gutter />
       <Button variant="light" block>Submit</Button>
+    </Box>
+  </Dropdown>
+
+  <Dropdown autofocus>
+    <span slot="trigger">
+      <Button>Notifications</Button>
+    </span>
+    <Box padding column>
+      <Switch gutter label="User" />
+      <Switch gutter label="Topic" />
+      <Switch label="Event" />
     </Box>
   </Dropdown>
 </Box>

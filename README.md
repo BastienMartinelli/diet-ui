@@ -1,4 +1,4 @@
-# SveltEZ
+# diet-ui
 
 A simple yet powerfull svelte components library.
 
