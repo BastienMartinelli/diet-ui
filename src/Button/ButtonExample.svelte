@@ -1,5 +1,6 @@
 <script lang="ts">
   import { ButtonGroup, Button } from "../";
+  import Global from "../Global";
 </script>
 
 <style>

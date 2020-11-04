@@ -1,4 +1,4 @@
-import { Divider } from "../";
+import Divider from "./Divider.svelte";
 import DividerExample from "./DividerExample"
 
 export default {
