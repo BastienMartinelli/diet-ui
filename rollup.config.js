@@ -4,6 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import replace from '@rollup/plugin-replace';
+
 
 const packageJson = require("./package.json");
 
@@ -15,12 +17,12 @@ export default {
 		{
       file: packageJson.main,
       format: "cjs",
-      sourcemap: true
+      sourcemap: !production
     },
     {
       file: packageJson.module,
       format: "esm",
-      sourcemap: true
+      sourcemap: !production
     }
 	],
 	plugins: [
@@ -29,9 +31,9 @@ export default {
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
-			css: css => {
+			/* css: css => {
 				css.write('bundle.css');
-			},
+			}, */
 			preprocess: sveltePreprocess(),
 		}),
 
@@ -48,6 +50,11 @@ export default {
 			sourceMap: !production,
 			inlineSources: !production
 		}),
+
+		replace({
+      // alternatively, one could pass process.env.NODE_ENV or 'development` to stringify
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify

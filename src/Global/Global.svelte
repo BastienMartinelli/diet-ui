@@ -72,7 +72,7 @@
     text-shadow: none !important;
   }
 
-  @keyframes glow {
+  @keyframes -global-glow {
     0% {
       opacity: 0.2;
     }
