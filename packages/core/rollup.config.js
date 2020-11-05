@@ -12,7 +12,7 @@ const packageJson = require("./package.json");
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/index.ts',
+	input: './src/index.ts',
 	output: [
 		{
       file: packageJson.main,
